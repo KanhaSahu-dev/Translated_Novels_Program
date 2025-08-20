@@ -1,0 +1,27 @@
+# Ultra-minimal requirements - pure Python only
+# Web Framework
+fastapi==0.104.1
+uvicorn==0.24.0
+pydantic==2.5.0
+
+# Web Scraping  
+requests==2.31.0
+beautifulsoup4==4.12.2
+
+# Basic Database (avoid SQLAlchemy for now)
+# Can use SQLite with basic Python sqlite3 module
+
+# Environment
+python-dotenv==1.0.0
+
+# Security
+python-multipart==0.0.6
+
+# Logging
+loguru==0.7.2
+
+# Basic text processing
+# textblob  # Skip for now, might need compilation
+
+# Note: This is a minimal setup to get the server running
+# Advanced features will need proper build tools 

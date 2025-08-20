@@ -1,0 +1,13 @@
+# Core essentials only - no testing, no security
+# Web Scraping  
+requests==2.31.0
+beautifulsoup4==4.12.2
+
+# Environment (optional)
+python-dotenv==1.0.0
+
+# Logging (optional)
+loguru==0.7.2
+
+# Note: Removed testing (pytest) and security (python-multipart) packages
+# This should install without any compilation issues 
