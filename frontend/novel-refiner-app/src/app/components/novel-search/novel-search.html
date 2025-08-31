@@ -1,1 +1,39 @@
-<p>novel-search works!</p>
+<div class="search-container">
+  <div class="search-header">
+    <h2>🔍 Search & Extract Novels</h2>
+    <p>Find and extract novels from novelhi.com and other sources</p>
+  </div>
+
+  <div class="search-form">
+    <div class="form-group">
+      <label for="searchQuery">Search for novels:</label>
+      <input 
+        type="text" 
+        id="searchQuery" 
+        placeholder="Enter novel title (e.g., 'Abyss Domination')"
+        class="search-input"
+      >
+    </div>
+    
+    <div class="form-group">
+      <label for="sourceSite">Source website:</label>
+      <select id="sourceSite" class="search-select">
+        <option value="novelhi.com">novelhi.com</option>
+        <option value="custom">Custom URL</option>
+      </select>
+    </div>
+
+    <button class="search-button">
+      <span class="icon">🔍</span>
+      Search Novels
+    </button>
+  </div>
+
+  <div class="search-results">
+    <h3>Search Results</h3>
+    <div class="results-placeholder">
+      <p>🔍 Enter a search term above to find novels</p>
+      <p>📚 Popular searches: "Abyss Domination", "Overlord", "Sword Art Online"</p>
+    </div>
+  </div>
+</div>

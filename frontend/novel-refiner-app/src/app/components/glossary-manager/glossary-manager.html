@@ -1,1 +1,57 @@
-<p>glossary-manager works!</p>
+<div class="glossary-container">
+  <div class="glossary-header">
+    <h2>📝 Glossary Manager</h2>
+    <p>Manage character names, places, and terminology for consistent translations</p>
+  </div>
+
+  <div class="glossary-content">
+    <div class="glossary-sidebar">
+      <div class="add-term-section">
+        <h3>Add New Term</h3>
+        <div class="form-group">
+          <label for="originalTerm">Original Term:</label>
+          <input type="text" id="originalTerm" placeholder="e.g., 'Abyss Lord'">
+        </div>
+        <div class="form-group">
+          <label for="preferredTerm">Preferred Translation:</label>
+          <input type="text" id="preferredTerm" placeholder="e.g., 'Abyss Lord'">
+        </div>
+        <div class="form-group">
+          <label for="termType">Type:</label>
+          <select id="termType">
+            <option value="character">Character</option>
+            <option value="place">Place</option>
+            <option value="skill">Skill</option>
+            <option value="item">Item</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <button class="add-term-btn">Add Term</button>
+      </div>
+    </div>
+
+    <div class="glossary-main">
+      <div class="terms-list">
+        <h3>Glossary Terms</h3>
+        <div class="term-item">
+          <div class="term-info">
+            <span class="term-original">Abyss Lord</span>
+            <span class="term-arrow">→</span>
+            <span class="term-preferred">Abyss Lord</span>
+            <span class="term-type character">Character</span>
+          </div>
+          <div class="term-actions">
+            <button class="action-btn small">Edit</button>
+            <button class="action-btn small danger">Delete</button>
+          </div>
+        </div>
+        
+        <div class="empty-glossary">
+          <span class="icon">📝</span>
+          <h3>No Terms Yet</h3>
+          <p>Add terms to maintain translation consistency</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

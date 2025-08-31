@@ -1,14 +1,14 @@
 import { Routes } from '@angular/router';
-import { NovelSearchComponent } from './components/novel-search/novel-search';
-import { NovelListComponent } from './components/novel-list/novel-list';
-import { GlossaryManagerComponent } from './components/glossary-manager/glossary-manager';
-import { ChapterViewComponent } from './components/chapter-view/chapter-view';
+import { NovelSearch } from './components/novel-search/novel-search';
+import { NovelList } from './components/novel-list/novel-list';
+import { GlossaryManager } from './components/glossary-manager/glossary-manager';
+import { ChapterView } from './components/chapter-view/chapter-view';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/search', pathMatch: 'full' },
-  { path: 'search', component: NovelSearchComponent },
-  { path: 'list', component: NovelListComponent },
-  { path: 'glossary', component: GlossaryManagerComponent },
-  { path: 'chapters', component: ChapterViewComponent },
+  { path: 'search', component: NovelSearch },
+  { path: 'list', component: NovelList },
+  { path: 'glossary', component: GlossaryManager },
+  { path: 'chapters', component: ChapterView },
   { path: '**', redirectTo: '/search' }
 ];
