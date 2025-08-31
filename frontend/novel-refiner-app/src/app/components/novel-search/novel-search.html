@@ -10,26 +10,58 @@
       <input 
         type="text" 
         id="searchQuery" 
+        [(ngModel)]="searchQuery"
         placeholder="Enter novel title (e.g., 'Abyss Domination')"
         class="search-input"
+        [disabled]="isSearching"
       >
     </div>
     
     <div class="form-group">
       <label for="sourceSite">Source website:</label>
-      <select id="sourceSite" class="search-select">
+      <select id="sourceSite" [(ngModel)]="sourceSite" class="search-select" [disabled]="isSearching">
         <option value="novelhi.com">novelhi.com</option>
         <option value="custom">Custom URL</option>
       </select>
     </div>
 
-    <button class="search-button">
-      <span class="icon">🔍</span>
-      Search Novels
+    <button class="search-button" (click)="searchNovels()" [disabled]="isSearching">
+      <span class="icon">{{ isSearching ? '⏳' : '🔍' }}</span>
+      {{ isSearching ? 'Searching...' : 'Search Novels' }}
     </button>
   </div>
 
-  <div class="search-results">
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="error-message">
+    <span class="icon">⚠️</span>
+    {{ errorMessage }}
+  </div>
+
+  <!-- Search Results -->
+  <div class="search-results" *ngIf="searchResults.length > 0">
+    <h3>Search Results ({{ searchResults.length }} found)</h3>
+    <div class="results-list">
+      <div *ngFor="let novel of searchResults" class="novel-result">
+        <div class="novel-info">
+          <h4>{{ novel.title }}</h4>
+          <p class="novel-author" *ngIf="novel.author">Author: {{ novel.author }}</p>
+          <p class="novel-description" *ngIf="novel.description">{{ novel.description }}</p>
+          <p class="novel-url">{{ novel.url }}</p>
+        </div>
+        <div class="novel-actions">
+          <button class="action-btn primary" (click)="extractNovel(novel.url)">
+            📥 Extract Novel
+          </button>
+          <a [href]="novel.url" target="_blank" class="action-btn secondary">
+            🔗 View Original
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Placeholder when no search performed -->
+  <div class="search-results" *ngIf="searchResults.length === 0 && !errorMessage && !isSearching">
     <h3>Search Results</h3>
     <div class="results-placeholder">
       <p>🔍 Enter a search term above to find novels</p>
