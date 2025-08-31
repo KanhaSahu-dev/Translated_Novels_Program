@@ -4,8 +4,8 @@ from fastapi.responses import JSONResponse
 import uvicorn
 from loguru import logger
 
-from app.api import scraper_routes, nlp_routes, glossary_routes
-from app.models.database import init_database
+from api import scraper_routes, nlp_routes, glossary_routes
+from models.database import init_database
 
 # Initialize FastAPI app
 app = FastAPI(

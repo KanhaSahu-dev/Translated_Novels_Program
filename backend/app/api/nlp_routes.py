@@ -4,8 +4,8 @@ from typing import List, Optional
 from pydantic import BaseModel
 import asyncio
 
-from app.models.database import get_db, Novel, Chapter, GlossaryTerm, ProcessingLog
-from app.modules.nlp_processor import TranslationRefiner, ContextTracker
+from models.database import get_db, Novel, Chapter, GlossaryTerm, ProcessingLog
+from modules.nlp_processor import TranslationRefiner, ContextTracker
 from loguru import logger
 
 router = APIRouter()

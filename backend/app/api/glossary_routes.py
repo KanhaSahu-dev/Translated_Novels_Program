@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from typing import List, Optional
 from pydantic import BaseModel
 
-from app.models.database import get_db, Novel, GlossaryTerm
+from models.database import get_db, Novel, GlossaryTerm
 from loguru import logger
 
 router = APIRouter()

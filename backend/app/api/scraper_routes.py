@@ -4,8 +4,8 @@ from typing import List, Optional
 from pydantic import BaseModel
 import asyncio
 
-from app.models.database import get_db, Novel, Chapter
-from app.modules.scraper import NovelHiScraper
+from models.database import get_db, Novel, Chapter
+from modules.scraper import NovelHiScraper
 from loguru import logger
 
 router = APIRouter()
