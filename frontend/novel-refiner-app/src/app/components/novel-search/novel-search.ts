@@ -11,11 +11,22 @@ import { CommonModule } from '@angular/common';
 export class NovelSearch {
   searchQuery: string = '';
   sourceSite: string = 'novelhi.com';
+  customUrl: string = '';
   isSearching: boolean = false;
   searchResults: any[] = [];
   errorMessage: string = '';
 
   async searchNovels() {
+    if (this.sourceSite === 'custom') {
+      if (!this.customUrl.trim()) {
+        this.errorMessage = 'Please enter a custom URL';
+        return;
+      }
+      // For custom URL, we'll directly extract without search
+      await this.extractNovel(this.customUrl);
+      return;
+    }
+
     if (!this.searchQuery.trim()) {
       this.errorMessage = 'Please enter a search term';
       return;
@@ -33,8 +44,7 @@ export class NovelSearch {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          query: this.searchQuery,
-          source: this.sourceSite
+          novel_name: this.searchQuery
         })
       });
 
@@ -64,8 +74,9 @@ export class NovelSearch {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          url: novelUrl,
-          source: this.sourceSite
+          novel_url: novelUrl,
+          max_chapters: 10,
+          use_selenium: false
         })
       });
 
@@ -74,11 +85,12 @@ export class NovelSearch {
       }
 
       const data = await response.json();
-      alert(`Successfully extracted novel: ${data.title}\nChapters found: ${data.chapters_count}`);
+      alert(`✅ Novel extraction started!\n\nNovel URL: ${data.novel_url}\nStatus: ${data.status}\n\nChapters will be extracted in the background. Check the Novel List page to see progress.`);
       
       // Clear search results after successful extraction
       this.searchResults = [];
       this.searchQuery = '';
+      this.customUrl = '';
     } catch (error) {
       console.error('Extraction error:', error);
       alert('Failed to extract novel. Please try again.');

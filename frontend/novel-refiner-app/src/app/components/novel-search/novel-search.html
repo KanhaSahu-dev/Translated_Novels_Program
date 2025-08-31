@@ -5,7 +5,8 @@
   </div>
 
   <div class="search-form">
-    <div class="form-group">
+    <!-- Search input - shown when not using custom URL -->
+    <div class="form-group" *ngIf="sourceSite !== 'custom'">
       <label for="searchQuery">Search for novels:</label>
       <input 
         type="text" 
@@ -25,9 +26,23 @@
       </select>
     </div>
 
+    <!-- Custom URL input - shown when custom URL is selected -->
+    <div class="form-group" *ngIf="sourceSite === 'custom'">
+      <label for="customUrl">Custom URL:</label>
+      <input 
+        type="url" 
+        id="customUrl" 
+        [(ngModel)]="customUrl"
+        placeholder="https://novelhi.com/novel/abyss-domination"
+        class="search-input"
+        [disabled]="isSearching"
+      >
+      <small class="help-text">Enter the direct URL to a novel page</small>
+    </div>
+
     <button class="search-button" (click)="searchNovels()" [disabled]="isSearching">
-      <span class="icon">{{ isSearching ? '⏳' : '🔍' }}</span>
-      {{ isSearching ? 'Searching...' : 'Search Novels' }}
+      <span class="icon">{{ isSearching ? '⏳' : (sourceSite === 'custom' ? '📥' : '🔍') }}</span>
+      {{ isSearching ? 'Processing...' : (sourceSite === 'custom' ? 'Extract Novel' : 'Search Novels') }}
     </button>
   </div>
 
@@ -64,8 +79,10 @@
   <div class="search-results" *ngIf="searchResults.length === 0 && !errorMessage && !isSearching">
     <h3>Search Results</h3>
     <div class="results-placeholder">
-      <p>🔍 Enter a search term above to find novels</p>
+      <p *ngIf="sourceSite !== 'custom'">🔍 Enter a search term above to find novels</p>
+      <p *ngIf="sourceSite === 'custom'">📥 Enter a custom URL above to extract a novel directly</p>
       <p>📚 Popular searches: "Abyss Domination", "Overlord", "Sword Art Online"</p>
+      <p>🔗 Or use Custom URL to extract from any novel page</p>
     </div>
   </div>
 </div>
