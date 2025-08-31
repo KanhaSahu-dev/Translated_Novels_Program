@@ -12,13 +12,12 @@ lxml==4.9.3
 # NLP and Machine Learning
 spacy==3.7.2
 transformers==4.35.2
-torch==2.1.1
+torch==2.2.2
 nltk==3.8.1
 textblob==0.17.1
 
 # Database
 sqlalchemy==2.0.23
-sqlite3
 
 # Data Processing
 pandas==2.1.3
